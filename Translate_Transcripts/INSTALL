@@ -1,0 +1,6 @@
+#!/bin/bash
+
+BASEDIR=$(readlink -f "$0")
+BASE=$(dirname "$BASEDIR")
+sed -i 's|basedir|'$BASE'|g' *pl
+sed -i 's|basedir|'$BASE'|g' *sh
