@@ -14,8 +14,14 @@ open my $fileseq, "<", $ARGV[1];
 while(<$fileseq> ){
 	chomp;
 	if(/^>/){
-		/>(.*?)\s.+/;
-		$tempquid = $1;
+		if(/\s/){
+			/>(.*?)\s.+/;	
+			$tempquid = $1;
+		}
+		else{
+			/>(.*?)/;
+			$tempquid = $1;
+		}
 	}
 	else{
 		$queryseqs{$tempquid}.= $_;
