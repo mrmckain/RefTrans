@@ -16,8 +16,14 @@ my $geneseqid;
 while(<$seqfile>){
 	chomp;
     if(/>/){
-	/>(.*?)\s.+/;
-    	$geneseqid = $1;
+	if(/\s/){
+		/>(.*?)\s.+/;
+    		$geneseqid = $1;
+	}
+	else{
+		$_ =~ />(.+)/;
+		$geneseqid = $1;
+	}
 	unless(exists $blastpairs{$geneseqid}){
 		$geneseqid=();
 	}
@@ -49,7 +55,7 @@ while(<$setfile>){
     my $stopper=0;
    
     my $temppep;
-    open $temppep, "<", $ARGV[2] or die "Can't open protein file\n";
+    open $temppep, "<", $ARGV[3] or die "Can't open protein file\n";
     while (<$temppep>){
     	chomp;
         if ($_ =~ /$geneid\s+/ || $_ =~ /$geneid$/){

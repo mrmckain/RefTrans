@@ -4,7 +4,7 @@ cd `pwd`
 
 mkdir $1_Translation
 cd $1_Translation
-time blastpath/tblastx -num_threads $4 -query $2 -db $3 -outfmt 6 -evalue 1e-10 -out $1.tblastx
+time ~/Downloads/ncbi-blast-2.2.29+/bin/tblastx -num_threads $4 -query $2 -db $3 -outfmt 6 -evalue 1e-10 -out $1.tblastx
 while [ ! -f "$1.tblastx" ];
 do
 	sleep 15

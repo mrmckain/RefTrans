@@ -19,7 +19,7 @@ while(<$fileseq> ){
 			$tempquid = $1;
 		}
 		else{
-			/>(.*?)/;
+			$_ =~ />(.+)/;
 			$tempquid = $1;
 		}
 	}
